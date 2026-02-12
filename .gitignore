@@ -208,4 +208,8 @@ __marimo__/
 
 # Custom
 data/
-manifest.sqlite
+pipeline.db
+.claude/
+pipeline.db-shm
+pipeline.db-wal
+pipeline.db-journal

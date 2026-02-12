@@ -1,0 +1,22 @@
+1. save pdfs with timestamp prefix
+2. break pdf into images ?? - NOT NOW
+3. augmentations - image augmented but text is same TO DISCUSS
+4. separate printed, handwritten and scene text HOW??? - by user query
+
+- use num_found
+- use full search API (XXX it searches inside docs' OCR content)
+
+- what about other mediatypes? (X for now)
+- investigate limit parameter (let it stay)
+
+- if file already exists under some other language, how do we handle that case?
+- how do we handle cases where wrongly labelled data is downloaded?
+- allow data reorganization
+
+- perhaps, don't enforce organization on the filesystem. enforce it at the database level -> less redundancy
+- have iarchive metadata in its own table, and this table should include download details too
+- our organization i.e. language and type labels should be in another table; allows room for a case where a document can belong to more than one language-type pair; have separate columns for lang + type discovered for and corrected lang + type too for manual corrections; the manual labels should be preferred if they exist
+- flow: user issues a query structured as (lang, type, query), all docs discovered through this process are added to both iarchive metadata and our lang-type pair tables,
+
+- break the script into separate services to decouple - discovery, downloading, ocr submission, ocr polling, etc.
+- use glm ocr (ollama or vllm)
